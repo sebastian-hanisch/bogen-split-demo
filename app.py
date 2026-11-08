@@ -81,7 +81,7 @@ with st.container(key="kopf"):
 st.markdown(
     """
 **Was ändert die Kapazität am Postboten?** Ohne Kapazität ist die Rundtour über alle Pflichtkanten ein einziges Optimierungsproblem (Stück `arc-routing-demo`). Mit Kapazität teilt sich die Arbeit auf mehrere Routen ab dem Depot (**CARP**).
-Das Rückgrat der Linie trägt auch hier: eine **Riesentour** ist eine Folge **orientierter Pflichtkanten**, der **Split** zerlegt sie optimal in Routen. Neu gegenüber den Kunden der früheren Stücke: jede Kante hat eine **Richtung**.
+Das Rückgrat der Linie trägt auch hier, sofern die Richtung im Blockpreis mitentschieden wird (mit zufällig festgelegten Richtungen nicht): eine **Riesentour** ist eine Folge **orientierter Pflichtkanten**, der **Split** zerlegt sie optimal in Routen. Neu gegenüber den Kunden der früheren Stücke: jede Kante hat eine **Richtung**.
 
 Weiter unten: **🔬 Eine Folge von Hand**, **🔬 Die Richtung zählt**, **🔬 Der Preis der Kapazität**, **🔬 Verfahren im Vergleich**, **🔬 Dominanz**, **🚧 Wo die Annahmen enden**,
 der Expander **⚠️ Annahmen, Grenzen und bekannte Probleme** und der Expander **📐 Mathematische Formulierung**.

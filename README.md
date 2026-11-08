@@ -23,7 +23,7 @@ Ein zusammenhängender Graph mit Knoten in der Ebene (euklidische Kantenkosten),
 
 **1. Die Dominanz gilt auf Bögen, in beiden Fassungen.** Bei 5 Pflichtkanten ist das Minimum über alle 3840 orientierten Folgen das exakte Optimum in 20 von 20 Instanzen, und das Minimum über alle 120 Kantenfolgen mit Blockpreis ebenfalls in 20 von 20. Aus jeder zulässigen Lösung entsteht durch Aneinanderhängen der Routen eine Folge, deren Split sie wiederfindet.
 
-**2. Die Richtung zerstört die Seltenheit.** Bei 6 Pflichtkanten (12 Instanzen; 46080 orientierte Folgen, 720 Kantenfolgen):
+**2. Die Richtung verschärft die Seltenheit: optimale orientierte Folgen sind etwa hundertmal seltener als optimale Kantenfolgen mit Blockpreis.** Bei 6 Pflichtkanten (12 Instanzen; 46080 orientierte Folgen, 720 Kantenfolgen):
 
 | | orientierte Folgen | Kantenfolgen mit Blockpreis |
 |---|---|---|
@@ -41,9 +41,9 @@ Ein zusammenhängender Graph mit Knoten in der Ebene (euklidische Kantenkosten),
 | Bestes von 200 orientierten Folgen + Split | 28,7 % (0) | 40,0 % (0) |
 | Bestes von 200 Kantenfolgen + Blockpreis | 1,5 % (9) | 2,6 % (6) |
 
-Mit dem Blockpreis schlägt die zufällige Folge im Mittel jede Konstruktion (Path-Scanning, nächster Nachbar, der Rural-Postman-Weg + Split); die Zufallsfolge mit festen Richtungen verliert um Größenordnungen. Der Rural-Postman-Weg als Riesentour trifft das Optimum nur in 2 von 16 (10 Kanten) und 1 von 16 (12 Kanten) Instanzen: wie in Stück 1 ist die kürzeste Gesamtfolge nicht die beste Folge.
+Mit dem Blockpreis (exakte Routen je Kantenmenge) schlägt das beste von 200 zufälligen Kantenfolgen im Mittel jede Konstruktion (Path-Scanning, nächster Nachbar, der Rural-Postman-Weg + Split); die Zufallsfolge mit festen Richtungen liegt etwa 36- bis 51-mal so weit über dem Optimum wie das beste von 200 Kantenfolgen mit Blockpreis (76,6 / 91,4 % gegen 1,5 / 2,6 %). Der Rural-Postman-Weg als Riesentour trifft das Optimum nur in 2 von 16 (10 Kanten) und 1 von 16 (12 Kanten) Instanzen: wie in Stück 1 ist die kürzeste Gesamtfolge nicht die beste Folge.
 
-**4. Der Preis der Kapazität.** Das Optimum mit Kapazität liegt gegen den Rural-Postman-Weg (eine Route, Kapazität ignoriert) im Mittel 32,0 % höher bei 10 Pflichtkanten (Median 35,9 %, höchstens 55,3 %) und 20,0 % bei 12 (Median 17,0 %, höchstens 69,2 %); im Optimum sind es im Mittel 3,0 Routen.
+**4. Der Preis der Kapazität.** Das Optimum mit Kapazität liegt gegen den Rural-Postman-Weg (eine Route, Kapazität ignoriert) im Mittel 32,0 % höher bei 10 Pflichtkanten (Median 35,9 %, höchstens 55,3 %) und 20,0 % bei 12 (Median 17,0 %, höchstens 69,2 %); im Optimum sind es im Mittel 3,0 Routen. Der Preis hängt an der Kapazitätsregel der Bänder (aufgerundet Gesamtnachfrage durch 3, plus 2) und schwankt als Mittel über nur 16 Instanzen stark (32,0 gegen 20,0 %); er ist keine Eigenschaft von CARP allgemein.
 
 **Handinstanz** (Raster mit 6 Knoten und 5 Pflichtkanten, Kapazität 6; ganzzahlige Kosten, von Hand nachrechenbar): Optimum 42 mit den Routen (4+ 3+ 1-) und (5+ 2+) (Längen 22 und 20); Rural-Postman-Weg ohne Kapazität 26 (das Optimum liegt 61,5 % darüber). Die Folge (2- 5+ 3- 4- 1+) liefert nach dem Split 44 (4,8 % über dem Optimum), die Folge (2- 1- 4+ 3+ 5-) 50. Optimum je Kapazität:
 
@@ -85,7 +85,7 @@ Mit dem Blockpreis schlägt die zufällige Folge im Mittel jede Konstruktion (Pa
 
 ## Tests
 
-124 Tests. Laufzeit lokal etwa eine Minute.
+125 Tests. Laufzeit lokal rund eineinhalb Minuten (gemessen: 82 Sekunden).
 
 ## Dateistruktur
 

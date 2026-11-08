@@ -64,6 +64,14 @@ def test_dominance_and_share():
     assert f"| Anteil optimaler Folgen, Median (kleinster bis größter) | {p(st.median(so), 2)} ({p(min(so), 2)} bis {p(max(so), 2)}) | {p(st.median(ss))} ({p(min(ss))} bis {p(max(ss))}) |" in README
     assert f"| Lücke einer zufälligen Folge, Mittel | {p(go)} | {p(gs)} |" in README
     assert (len(rows6), rows6[0]["n_oriented"], rows6[0]["n_sets"]) == (12, 46080, 720)
+    assert 90 < st.median(ss) / st.median(so) < 120 and "etwa hundertmal seltener als optimale Kantenfolgen mit Blockpreis" in README
+
+
+def test_random_orientations_against_the_block_price_factor():
+    mean = {m: {k: st.mean(gap(r[f], r["opt"]) for r in B["carp"] if r["m"] == m) for k, f in (("R1", "r1"), ("BLK", "blk"))} for m in C.BAND_SIZES}
+    factors = sorted(round(mean[m]["R1"] / mean[m]["BLK"]) for m in C.BAND_SIZES)
+    assert factors == [36, 51]
+    assert "liegt etwa 36- bis 51-mal so weit über dem Optimum wie das beste von 200 Kantenfolgen mit Blockpreis (76,6 / 91,4 % gegen 1,5 / 2,6 %)" in README
 
 
 def test_the_hand_instance_numbers():
